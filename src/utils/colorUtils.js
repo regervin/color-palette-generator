@@ -1,10 +1,11 @@
 import chroma from 'chroma-js';
 
+// Fix: Export the functions properly
 const isValidColor = (color) => {
   try {
     chroma(color);
     return true;
-  } catch (error) {
+  } catch {
     return false;
   }
 };
@@ -19,7 +20,7 @@ const generatePalettes = (baseColor) => {
       base.set('hsl.h', (base.get('hsl.h') + 180) % 360).hex()
     ];
 
-    // Analogous colors (30 degrees apart)
+    // Analogous colors
     const analogous = [
       base.set('hsl.h', (base.get('hsl.h') - 30) % 360).hex(),
       baseColor,
@@ -39,7 +40,7 @@ const generatePalettes = (baseColor) => {
     const accents = [
       base.set('hsl.h', (base.get('hsl.h') + 120) % 360).hex(),
       base.set('hsl.h', (base.get('hsl.h') + 180) % 360).hex(),
-      base.set('hsl.h', (base.get('hsl.h') + 240) % 360).hex(),
+      base.set('hsl.h', (base.get('hsl.h') + 240) % 360).hex()
     ];
 
     return {
@@ -53,4 +54,5 @@ const generatePalettes = (baseColor) => {
   }
 };
 
+// Fix: Export both functions
 export { isValidColor, generatePalettes };

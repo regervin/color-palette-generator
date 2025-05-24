@@ -16,7 +16,7 @@ function App() {
     setError('');
   };
 
-  const handleColorInputChange = (e) => {
+  const handleInputChange = (e) => {
     const value = e.target.value;
     setColorInput(value);
     
@@ -25,7 +25,7 @@ function App() {
       setPalettes(generatePalettes(value));
       setError('');
     } else {
-      setError('Please enter a valid hex or RGB color');
+      setError('Please enter a valid hex (#RRGGBB) or RGB color');
     }
   };
 
@@ -44,14 +44,14 @@ function App() {
               className="w-20 h-20 rounded cursor-pointer"
             />
           </div>
-          <div>
+          <div className="flex-1 max-w-xs">
             <label className="block mb-2">Or enter hex/RGB value:</label>
             <input
               type="text"
               value={colorInput}
-              onChange={handleColorInputChange}
-              placeholder="#FF5733 or rgb(255,87,51)"
-              className="px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={handleInputChange}
+              placeholder="#RRGGBB or rgb(r,g,b)"
+              className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
           </div>
